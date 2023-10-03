@@ -32,7 +32,7 @@ const userSchema: Schema<IUser> = new mongoose.Schema(
                 validator: function (value: string) {
                     return emailRegexPattern.test(value);
                 },
-                message: "Please enter a valid email",
+                message: "Please enter a valid email.",
             },
             unique: true,
         },
@@ -40,7 +40,7 @@ const userSchema: Schema<IUser> = new mongoose.Schema(
         password: {
             type: String,
             required: [true, "Password is required!"],
-            minlength: [5, "Password must be at least 5 characters"],
+            minlength: [5, "Password must be at least 5 characters."],
             select: false,
         },
 
@@ -86,6 +86,6 @@ userSchema.methods.comparePassword = async function (
     return await bcrypt.compare(enteredPassword, this.password);
 };
 
-const userModel: Model<IUser> = mongoose.model("User", userSchema);
+const Users: Model<IUser> = mongoose.model("Users", userSchema);
 
-export default userModel;
+export default Users;
